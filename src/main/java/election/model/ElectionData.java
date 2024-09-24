@@ -1,6 +1,7 @@
 package election.model;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 public class ElectionData {

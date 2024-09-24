@@ -1,9 +1,8 @@
 package election.services;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
 public class ElectionConsumer {
     @RequestMapping("/{eID}/consumer")
     @ResponseBody
@@ -124,7 +123,7 @@ public class ElectionConsumer {
                 "        // Check if vorzugskandidaten is null\n" +
                 "        const vorzugskandidatenHTML = party.vorzugskandidaten \n" +
                 "            ? party.vorzugskandidaten.map(candidate => `\n" +
-                "                ListenNR: ${candidate.listenNR}, Name: ${candidate.name}, Stimmen: ${candidate.stimmen}\n" +
+                "                Listen Nummer: ${candidate.listenNR}, Name: ${candidate.name}, Stimmen: ${candidate.stimmen}\n" +
                 "            `).join('<br>')  // Join multiple candidates by line breaks\n" +
                 "            : 'No Candidates';  // If null, show \"No Candidates\"\n" +
                 "\n" +
