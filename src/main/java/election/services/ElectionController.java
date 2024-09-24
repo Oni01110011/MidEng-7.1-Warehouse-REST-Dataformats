@@ -18,7 +18,7 @@ public class ElectionController {
 		String mainPage = "This is the election application! (DEZSYS_Election_REST) <br/><br/>" +
 				"<a href='http://localhost:3389/election/001/json'>Link to Election/001/json</a><br/>" +
 				"<a href='http://localhost:3389/election/001/xml'>Link to Election/001/xml</a><br/>" +
-				"<a href='http://localhost:3389/001/consumer'>Link to Table/001/consumer/a><br/>";
+				"<a href='http://localhost:3389/001/consumer'>Link to Table/001/consumer</a><br/>";
 		return mainPage;
 	}
 
