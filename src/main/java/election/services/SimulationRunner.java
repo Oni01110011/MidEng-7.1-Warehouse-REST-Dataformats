@@ -3,7 +3,7 @@ package election.services;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
-
+// EK Ü SimulationRunner simuliert mehrere Wahllokale, die ihre Daten unabhängig senden:
 @Component
 public class SimulationRunner implements CommandLineRunner {
 

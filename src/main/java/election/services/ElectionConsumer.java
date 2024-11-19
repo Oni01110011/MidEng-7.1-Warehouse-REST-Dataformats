@@ -7,7 +7,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
-
+// GK Ü Der Consumer empfängt die Daten von Kafka (oder der JMS Queue) und gibt sie im Log aus
+// EK Ü ElectionConsumer verarbeitet die Daten mehrerer Wahllokale parallel und fügt sie in die
+// zentrale Datenstruktur ein.
 @Service
 public class ElectionConsumer {
 
@@ -27,15 +29,12 @@ public class ElectionConsumer {
             ElectionData data = objectMapper.readValue(message, ElectionData.class);
 
             logger.info("Received data from Polling Station ID {}: {}", data.getPollingStationId(), message);
-
-            // Add data to ElectionService for aggregation
             electionService.addData(data);
 
             // Send feedback to the polling station after successful processing
             feedbackProducer.sendFeedback(data.getPollingStationId(), "SUCCESS");
         } catch (Exception e) {
             logger.error("Error processing election data from polling station", e);
-            // Optionally, handle retries or send failure feedback
         }
     }
 }

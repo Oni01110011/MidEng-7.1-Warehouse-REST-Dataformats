@@ -3,6 +3,7 @@ package election.services;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+// EK V Empfängt die Rückmeldung
 @Service
 public class FeedbackListener {
 

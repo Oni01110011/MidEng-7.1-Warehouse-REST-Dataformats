@@ -5,6 +5,10 @@ import election.model.ElectionData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+// GK Ü ElectionDataSender sendet Daten von Election Simulator über Kafka
+// (bzw. JMS Queue in einem Punkt-zu-Punkt-Szenario) an den Zentralrechner,
+//Die Daten werden von einem Consumer (z. B. ElectionConsumer) verarbeitet und
+// im Zentralrechner gespeichert.
 @Service
 public class ElectionDataSender {
 

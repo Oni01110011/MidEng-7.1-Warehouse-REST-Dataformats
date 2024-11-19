@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+// GKV electionConsumer fügt die empfangenen Daten in eine zentrale Liste (electionDataList) ein
 @Service
 public class ElectionService {
 

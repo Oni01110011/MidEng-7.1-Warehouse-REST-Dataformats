@@ -6,6 +6,7 @@ import election.model.ElectionData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+// GK V
 @RestController
 @RequestMapping("/election2024")
 public class ElectionController {
