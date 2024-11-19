@@ -22,13 +22,16 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
 
-// Um mögliche Fehlermeldung vorzubeugen
 tasks.withType(JavaCompile) {
-	options.compilerArgs << '-parameters'
+	options.compilerArgs << "-parameters"
 }

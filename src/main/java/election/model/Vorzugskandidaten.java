@@ -5,6 +5,10 @@ public class Vorzugskandidaten {
     private int listenNR;
     private String name;
     private int stimmen;
+
+
+    public Vorzugskandidaten() {}
+
     public Vorzugskandidaten(String partyID, int listenNR, String name, int stimmen) {
         this.partyID = partyID;
         this.listenNR = listenNR;

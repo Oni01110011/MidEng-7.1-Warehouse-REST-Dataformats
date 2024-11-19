@@ -8,49 +8,41 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ElectionSimulator {
+
     public int generateRandomNumber() {
         Random random = new Random();
         return random.nextInt(501);
     }
 
-    public ElectionData getData(int wID) {
+    public ElectionData generateElectionData(String pollingStationId, int regionID) {
         ElectionData data = new ElectionData();
 
-        data.setRegionID(wID);
+        data.setPollingStationId(pollingStationId);
+        data.setRegionID(regionID);
         data.setRegionName("TGM - Technologisches Gewerbe Museum");
         data.setRegionAddress("Wexstraße 19-23");
         data.setRegionPostalCode("Vienna");
         data.setFederalState("Austria");
 
-        ArrayList<Vorzugskandidaten> vz = new ArrayList<>();
-        vz.add(new Vorzugskandidaten("OEVP", 212 ,"Max Mustermann", generateRandomNumber()));
-        vz.add(new Vorzugskandidaten("OEVP", 212 ,"Daniela Dorian", generateRandomNumber()));
-        vz.add(new Vorzugskandidaten("OEVP", 212 ,"Chen Son Goku", generateRandomNumber()));
+        ArrayList<Vorzugskandidaten> oevpCandidates = new ArrayList<>();
+        oevpCandidates.add(new Vorzugskandidaten("OEVP", 212, "Danilo Stoilovski", generateRandomNumber()));
+        oevpCandidates.add(new Vorzugskandidaten("OEVP", 212, "Daniela Dorian", generateRandomNumber()));
 
-        ArrayList<Vorzugskandidaten> vz2 = new ArrayList<>();
-        vz2.add(new Vorzugskandidaten("FPOE", 212 ,"Wichitger man 2", generateRandomNumber()));
-        vz2.add(new Vorzugskandidaten("FPOE", 212 ,"Aran Yilidirn", generateRandomNumber()));
-        vz2.add(new Vorzugskandidaten("FPOE", 212 ,"Tom Ristic", generateRandomNumber()));
-        vz2.add(new Vorzugskandidaten("FPOE", 212 ,"Sandip Martin Saran", generateRandomNumber()));
+        ArrayList<Vorzugskandidaten> fpoeCandidates = new ArrayList<>();
+        fpoeCandidates.add(new Vorzugskandidaten("FPOE", 212, "Wichtiger Mann", generateRandomNumber()));
+        fpoeCandidates.add(new Vorzugskandidaten("FPOE", 212, "Aran Yildirim", generateRandomNumber()));
 
-        ArrayList<Vorzugskandidaten> vz3 = new ArrayList<>();
-        vz3.add(new Vorzugskandidaten("GRUENE", 212 ,"Franz Puerto", generateRandomNumber()));
-        vz3.add(new Vorzugskandidaten("GRUENE", 212 ,"Simon Chladeck", generateRandomNumber()));
-        vz3.add(new Vorzugskandidaten("GRUENE", 212 ,"Marko Ekmedzic", generateRandomNumber()));
-        vz3.add(new Vorzugskandidaten("GRUENE", 212 ,"Dennis Kozac", generateRandomNumber()));
+        Party party1 = new Party("OEVP", generateRandomNumber(), oevpCandidates);
+        Party party2 = new Party("FPOE", generateRandomNumber(), fpoeCandidates);
+        Party party3 = new Party("NEOS", generateRandomNumber(), null);
 
-        Party party1 = new Party("OEVP", generateRandomNumber(), vz);
-        Party party2 = new Party("FPOE", generateRandomNumber(), vz2);
-        Party party3 = new Party("NEOS", generateRandomNumber(),null);
-        Party party4 = new Party("GRUENE", generateRandomNumber(),vz3);
+        ArrayList<Party> parties = new ArrayList<>();
+        parties.add(party1);
+        parties.add(party2);
+        parties.add(party3);
 
-        ArrayList<Party> partys = new ArrayList<>();
-        partys.add(party1);
-        partys.add(party2);
-        partys.add(party3);
-        partys.add(party4);
+        data.setCountingData(parties);
 
-        data.setCountingData(partys);
         return data;
     }
 }

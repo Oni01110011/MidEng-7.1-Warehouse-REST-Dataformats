@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Date;
 
 public class ElectionData {
+    private String pollingStationId;
     private int regionID;
     private String regionName;
     private String regionAddress;
@@ -26,6 +27,14 @@ public class ElectionData {
         this.federalState = federalState;
         this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
         this.countingData = countingData;
+    }
+
+    public String getPollingStationId() {
+        return pollingStationId;
+    }
+
+    public void setPollingStationId(String pollingStationId) {
+        this.pollingStationId = pollingStationId;
     }
 
     public int getRegionID() {
