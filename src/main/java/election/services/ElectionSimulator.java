@@ -9,9 +9,11 @@ import java.util.Random;
 
 public class ElectionSimulator {
 
-    public int generateRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(501);
+    private final Random random = new Random();
+
+    private int generateVotesForStation(String pollingStationId) {
+        int baseOffset = Math.abs(pollingStationId.hashCode() % 500);
+        return random.nextInt(200) + baseOffset;
     }
 
     public ElectionData generateElectionData(String pollingStationId, int regionID) {
@@ -25,16 +27,16 @@ public class ElectionSimulator {
         data.setFederalState("Austria");
 
         ArrayList<Vorzugskandidaten> oevpCandidates = new ArrayList<>();
-        oevpCandidates.add(new Vorzugskandidaten("OEVP", 212, "Danilo Stoilovski", generateRandomNumber()));
-        oevpCandidates.add(new Vorzugskandidaten("OEVP", 212, "Daniela Dorian", generateRandomNumber()));
+        oevpCandidates.add(new Vorzugskandidaten("OEVP", 1, "Danilo Stoilovski", generateVotesForStation(pollingStationId)));
+        oevpCandidates.add(new Vorzugskandidaten("OEVP", 2, "Daniela Dorian", generateVotesForStation(pollingStationId)));
 
         ArrayList<Vorzugskandidaten> fpoeCandidates = new ArrayList<>();
-        fpoeCandidates.add(new Vorzugskandidaten("FPOE", 212, "Wichtiger Mann", generateRandomNumber()));
-        fpoeCandidates.add(new Vorzugskandidaten("FPOE", 212, "Aran Yildirim", generateRandomNumber()));
+        fpoeCandidates.add(new Vorzugskandidaten("FPOE", 1, "Wichtiger Mann", generateVotesForStation(pollingStationId)));
+        fpoeCandidates.add(new Vorzugskandidaten("FPOE", 2, "Aran Yildirim", generateVotesForStation(pollingStationId)));
 
-        Party party1 = new Party("OEVP", generateRandomNumber(), oevpCandidates);
-        Party party2 = new Party("FPOE", generateRandomNumber(), fpoeCandidates);
-        Party party3 = new Party("NEOS", generateRandomNumber(), null);
+        Party party1 = new Party("OEVP", generateVotesForStation(pollingStationId), oevpCandidates);
+        Party party2 = new Party("FPOE", generateVotesForStation(pollingStationId), fpoeCandidates);
+        Party party3 = new Party("NEOS", generateVotesForStation(pollingStationId), null);
 
         ArrayList<Party> parties = new ArrayList<>();
         parties.add(party1);

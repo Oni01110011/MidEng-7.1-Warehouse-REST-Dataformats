@@ -28,4 +28,12 @@ public class ElectionService {
     public String getAggregatedDataAsXml() throws JsonProcessingException {
         return xmlMapper.writeValueAsString(electionDataList);
     }
+
+    public ElectionData getDataByPollingStationId(String pollingStationId) {
+        return electionDataList.stream()
+                .filter(data -> pollingStationId.equals(data.getPollingStationId()))
+                .findFirst()
+                .orElse(null);
+    }
+
 }
